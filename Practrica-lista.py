@@ -11,6 +11,7 @@ class listaOperacion:
         lista = self.n
         listaRepetidos=[]
         print("lista ordenada: ", sorted(lista))
+
     def numerosParesImpares(self):
         listaPares = []
         listaImpares=[]
@@ -22,6 +23,7 @@ class listaOperacion:
                 listaImpares.append(numero)
         print("lista pares: ", listaPares)
         print("lista impares: ",listaImpares)
+        
     def repetidos(self):
         countRepetido={}
         lista = self.n
@@ -43,4 +45,4 @@ def main():
     obj.repetidos()
 if __name__ == "__main__":
         main()
-    
+  

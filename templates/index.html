@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <title>Operaciones Basicas</title>
+    <style>
+        body{
+            padding-top: 60px;
+        }
+        .tr-head{background: blue;}
+    </style>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <form action="/resultado" method="POST">
+        <label>N1:</label>
+        <input type="text" name="n1"><br>
+        <label>N2:</label>
+        <input type="text" name="n2"><br>
+        <input type="radio" name="suma" id="suma">
+        <label for="">Suma</label>
+        <input type="radio" name="resta" id="suma">
+        <label for="">resta</label>
+        <input type="radio" name="multiplicacion" id="suma">
+        <label for="">multiplicacion</label>
+        <input type="radio" name="division" id="suma">
+        <label for="">division</label>
+        <input type="submit"/>
+    </form>
+</body>
+</html>
