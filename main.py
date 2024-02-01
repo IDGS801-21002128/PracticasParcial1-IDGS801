@@ -1,11 +1,27 @@
 from flask import *
-
+from math import *
+from forms import Punto
 app=Flask(__name__)
 
 
-@app.route("/")
-def calculadora():
-    return render_template("index.html")
+@app.route("/distancia",methods=["GET","POST"])
+def calDistancia():
+    distanciaClase = Punto(request.form)
+    x=''
+    y=''
+    x2=''
+    y2=''
+    resultado=''
+    if request.method == "POST":
+        x = distanciaClase.x.data
+        y = distanciaClase.y.data
+        x2= distanciaClase.x2.data
+        y2=distanciaClase.y2.data
+
+        resultado=sqrt((x2-x)**2 + (y2-y)**2)
+        
+    return render_template("distancia.html",form=distanciaClase,x=x,y=y,resultado=resultado)
+
 
     
 @app.route("/resultado",methods=["GET","POST"])

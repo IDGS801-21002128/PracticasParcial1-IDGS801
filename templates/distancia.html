@@ -1,0 +1,35 @@
+{% extends "layout2.html" %}
+{%block container%}
+{%import "macro.html" as macros%}
+
+<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.min.css">
+
+<form action="" method="POST" novalidate>
+    <label><h2>Primer Punto</h2></label>
+    <div class="row control-group ">
+        <div class="form-group col-xs-12 floating-label-form-group ontrols">
+            {{macros.camposNuevos(form.x,class="form-control")}}
+        </div>          
+    </div>
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group ontrols">
+            {{macros.camposNuevos(form.y,class="form-control")}}
+        </div>          
+    </div>
+    <label><h2>Segundo Punto</h2></label>
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group ontrols">
+            {{macros.camposNuevos(form.x2,class="form-control")}}
+        </div>          
+    </div>
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group ontrols">
+            {{macros.camposNuevos(form.y2,class="form-control")}}
+        </div>          
+    </div>
+    <input type="submit">
+
+    <h3>Resultado es: {{resultado}}</h3>
+</form>
+{%endblock%}
