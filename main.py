@@ -1,6 +1,6 @@
 from flask import *
 from math import *
-from forms import Resistencias
+from forms import Resistencias,Punto
 app=Flask(__name__)
 
 
