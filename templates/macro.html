@@ -3,5 +3,22 @@
 
 <td>{{field.label}}</td>
 <dd>{{field(**kwargs)|safe}}</dd>
-
 {%endmacro%}
+{%macro camposResistencia(field,listaColores)%}
+<label style="text-transform: capitalize;"></label>
+<div>
+    <select name="{{field.name}}" id="{{field.id}}" class="{{kwargs.class}}">
+        {%for colores in listaColores%}
+        <option value="{{colores}}">{{colores}}</option>
+        {%endfor%}
+    </select>
+</div>
+{%endmacro%}
+
+{% macro campoTolerancia(field) %}
+    <input type="radio" class="btn-check" name="{{ field.name }}" id="{{ field.id }}_oro" value="oro">
+    <label class="btn btn-outline-secondary" for="{{ field.id }}_oro">Oro</label>
+
+    <input type="radio" class="btn-check" name="{{ field.name }}" id="{{ field.id }}_plata" value="plata">
+    <label class="btn btn-outline-secondary" for="{{ field.id }}_plata">Plata</label>
+{% endmacro %}

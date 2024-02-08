@@ -1,0 +1,58 @@
+{% extends "layout2.html" %}
+{%block container%}
+{%import "macro.html" as macros%}
+
+
+<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.min.css">
+
+<form action="" method="POST" novalidate>
+    <label><h2>Colores de resistencias</h2></label>
+    <div class="d-flex flex-row ">
+        <div class="form-group ">
+            {{macros.camposResistencia(form.PrimerResistencia,colores,class="form-control")}}
+        </div>          
+        <div class="form-group ">
+                {{macros.camposResistencia(form.SegundaResistencia,colores,class="form-control")}}
+        </div>  
+        <div class="form-group ">
+            {{macros.camposResistencia(form.TerceraResistencia,multiplicador,class="form-control")}}
+         </div>    
+    </div>
+    <div class="d-flex flex-row">
+        {{ macros.campoTolerancia(form.tolerancia) }}
+    </div>
+    <div class="d-flex" style="padding-top: 2%;">
+        <input type="submit" style="background-color: yellow;">
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Primer Banda</th>
+                <th>Segunda Banda</th>
+                <th>Tercer Banda</th>
+                <th>Tolerancia</th>
+                <th>Valor</th>
+                <th>Valor Máximo</th>
+                <th>Valor Minimo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                <th class="{{R1}}" >{{R1}}</th>
+                <th class="{{R2}}" >{{R2}}</th>
+                <th class="{{R3}}" >{{R3}}</th>
+                <th class="{{tol}}" >{{fin}}</th>
+                <th>{{resultado}}</th>
+                <th>{{min}}</th>
+                <th>{{max}}</th>
+            </tr>
+        </tbody>
+    </table>
+  
+</form>
+
+
+{%endblock%}
