@@ -1,0 +1,4 @@
+Red,rojo
+Green,Verde
+Pink,Rosa
+Car,Carro

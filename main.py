@@ -1,6 +1,8 @@
 from flask import *
 from math import *
-from forms import Resistencias,Punto
+from io import open
+
+from forms import Resistencias,Diccionario
 app=Flask(__name__)
 
 
@@ -21,6 +23,51 @@ def calDistancia():
         resultado=sqrt((x2-x)**2 + (y2-y)**2)
         
     return render_template("distancia.html",form=distanciaClase,x=x,y=y,resultado=resultado)
+
+@app.route("/dir",methods=["GET","POST"])
+def diccionario():
+    dir = Diccionario(request.form)
+    ingles = ""
+    español = ""
+    palabraRadio = ""
+    buscar = ""
+    resultado=""
+    archivo1=""
+    if request.method == "POST":
+        if request.form.get("btn") == "Registrar":
+            dir.buscar.validators=[]
+            dir.palabraRadio.validators=[]
+            print("JEJE")
+            if dir.validate():
+                ingles = dir.ingles.data
+                español = dir.español.data
+                
+                archivo1 = open("diccionario.txt","a")
+                archivo1.write(ingles+","+español+"\n")
+                archivo1.close()
+        else:   
+            dir.ingles.validators=[]
+            dir.español.validators=[]
+            if dir.validate():
+                buscar = dir.buscar.data
+                palabraRadio = dir.palabraRadio.data
+                archivo1= open("diccionario.txt","r")
+                datos = archivo1.readlines()
+                for item in datos:
+                    
+                    palabra = item.strip().split(",")
+                    
+                    if palabra[0] == buscar and palabraRadio == "ingles": 
+                        resultado=palabra[1]
+                        break
+                    elif palabra[1] == buscar and palabraRadio == "español":
+                        resultado=palabra[0]
+                        break
+                    else:
+                        resultado="no existe"
+                   
+    print(resultado)
+    return render_template("diccionario.html",form=dir,resultado=resultado,buscar=buscar,ingles= ingles, español=español,palabraRadio=palabraRadio)
 
 @app.route("/resis",methods=["GET","POST"])
 def calResis():
@@ -86,4 +133,4 @@ def resultado():
 
      
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=True)  
